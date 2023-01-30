@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 스프링 빈 설정 파일 -->
+	<bean id="test" class="ex01.SpringTest" scope="prototype"/>
+
+	<!-- 생성자 통한 주입 -->
+	<bean id="chef" class="ex02.Chef" />
+	<bean id="hotel" class="ex02.Hotel">
+		<constructor-arg ref="chef" />
+	</bean>
+
+	<!-- setter를 통한 주입 -->
+	<bean id="dev" class="ex02.DatabaseDev">
+		<property name="uid" value="데이터베이스주소" />
+		<property name="url" value="데이터베이스계정명" />
+		<property name="upw" value="데이터베이스비밀번호" />
+	</bean>
+	
+	<!-- 주입이 두번들어감 -->
+	<bean id="dao" class="ex02.MemberDAO">
+		<property name="databaseDev" ref="dev"/> 
+	</bean>
+	
+	<!-- 실습 -->
+	<bean id="battery1" class="ex04.Battery1" />
+	<bean id="battery2" class="ex04.Battery2" />
+	
+	<!-- Car는 생성자 주입 -->	
+	<bean id="car" class="ex04.Car">
+		<constructor-arg ref="battery1"/>
+	</bean>	
+	
+	<!-- Airplane는 setter를 통한 주입 -->
+	<bean id="airplane" class="ex04.Airplane">
+		<property name="battery" ref="battery2">
+		</property>
+	</bean>
+
+</beans>
