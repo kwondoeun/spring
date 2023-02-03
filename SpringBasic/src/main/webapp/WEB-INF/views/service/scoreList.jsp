@@ -17,7 +17,7 @@
 		${article.name }
 		${article.kor }
 		${article.eng }
-		<a href="delete?num=${num.index }">삭제</a><br/>
+		<a href="delete?num=${article.num }">삭제</a><br/>
 	</c:forEach>
 	
 
