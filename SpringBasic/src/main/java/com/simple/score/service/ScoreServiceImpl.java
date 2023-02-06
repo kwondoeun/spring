@@ -11,11 +11,32 @@ import org.springframework.stereotype.Service;
 
 import com.simple.command.ScoreVO;
 import com.simple.score.dao.ScoreDAO;
+import com.simple.score.mapper.ScoreMapper;
 
 //@Service//@Component//@Repository//@Controller //서비스영역이니 service사용
 @Service("xxx") //bean의 이름 명시
 public class ScoreServiceImpl implements ScoreService{
 	
+	//마이바티스 매퍼
+	@Autowired
+	private ScoreMapper scoreMapper;
+
+	@Override
+	public void regist(ScoreVO vo) {
+		scoreMapper.regist(vo);
+	}
+
+	@Override
+	public ArrayList<ScoreVO> getList() {
+		return scoreMapper.getList();
+	}
+
+	@Override
+	public void delete(int num) {
+		scoreMapper.delete(num);
+	}
+	
+	/*
 	@Autowired
 	@Qualifier("yyy")
 	private ScoreDAO scoreDAO;
@@ -37,5 +58,6 @@ public class ScoreServiceImpl implements ScoreService{
 		scoreDAO.delete(num);
 		
 	}
+	*/
 
 }

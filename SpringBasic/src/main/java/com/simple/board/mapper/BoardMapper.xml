@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <!-- 인터페이스의 풀경로를 적습니다. -->
+<mapper namespace="com.simple.board.mapper.BoardMapper">
+	<!-- 등록 -->
+	<insert id="boardRegist">
+		insert into board(name, title, content)
+		values(#{name}, #{title}, #{content})
+	</insert>
+	
+	<!-- 조회 -->
+	<select id="getList" resultType="com.simple.command.BoardVO">
+		select * from board
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="boardDelete">
+		delete from board where num = #{num}
+	</delete>
+	
+	
+	
+</mapper>
