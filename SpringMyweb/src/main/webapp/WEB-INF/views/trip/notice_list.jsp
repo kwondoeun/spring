@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 	<div id="container">
 		<!-- location_area -->
@@ -42,19 +43,18 @@
 						<th scope="col">작성일</th>
 					</tr>
 				</thead>
-				
 				<tbody>
-				<c:forEach var="article" items="${list }" varStatus="num">
+					<c:forEach var="vo" items="${list }" varStatus="num">
 					<tr>
-						<td>${num.index+1 }</td>
-						<td>${article.title }</td>
-						<td>${article.hit }</td>
-						<td>${article.regdate }</td>
+						<td>${num.count }</td>
+						<td class="tit_notice"><a href="notice_view?tno=${vo.tno }">${vo.title }</a> </td>
+						<td>${vo.hit }</td>
+						<td><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
 					</tr>
-				</c:forEach>
+					</c:forEach>
+					
 				</tbody>
 			</table>
-			
 			<!-- pagination -->
 			<div class="pagination">
 				<a href="javascript:;" class="firstpage  pbtn"><img src="${pageContext.request.contextPath }/resources/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
